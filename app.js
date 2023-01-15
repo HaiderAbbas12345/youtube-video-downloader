@@ -24,6 +24,10 @@ app.get("/d", (req, res) => {
   }).pipe(res);
 });
 
+app.get("/", (req, res) => {
+  res.json({ message: "asdasdadsd" });
+});
+
 app.listen(PORT, () => {
   console.log(`Server Running On Port ${PORT}`);
 });
