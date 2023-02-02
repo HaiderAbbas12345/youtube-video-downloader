@@ -24,11 +24,11 @@ app.post("/ContactForm", async (req, res) => {
   });
 
   let info = await transporter.sendMail({
-    from: "mahmoodibrahim886@gmail.com",
-    to: "hmughal0123@gmail.com",
-    subject: `Email from ${req.name}`,
+    from: `${req.body.email}`,
+    to: "mahmoodibrahim886@gmail.com",
+    subject: `Email from ${req.body.name}`,
     text: "Hello world?",
-    html: `<h2>Message:<h2/><p>${req.message}</p>`,
+    html: `<h2>Message:<h2/><p>${req.body.message}</p>`,
   });
 
   res.send({
