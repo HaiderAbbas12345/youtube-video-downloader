@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(morgan("tiny"));
 app.use(cors());
 
-app.get("/ContactForm", async (req, res) => {
+app.post("/ContactForm", async (req, res) => {
   let transporter = nodemailer.createTransport({
     service: "gmail",
     port: 587,
