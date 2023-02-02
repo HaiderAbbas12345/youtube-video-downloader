@@ -1,8 +1,7 @@
 const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
-const ytdl = require("ytdl-core");
-const fs = require("fs");
+const nodemailer = require("nodemailer");
 
 const app = express();
 
@@ -13,19 +12,27 @@ app.use(express.urlencoded({ extended: true }));
 app.use(morgan("tiny"));
 app.use(cors());
 
-app.get("/d", (req, res) => {
-  const url = req.query.URL;
-  const quality = req.query.QUALITY;
+app.get("/ContactForm", async (req, res) => {
+  let transporter = nodemailer.createTransport({
+    service: "gmail",
+    port: 587,
+    secure: false,
+    auth: {
+      user: "mahmoodibrahim886@gmail.com",
+      pass: "vjaaskszsnwcubxl",
+    },
+  });
 
-  res.header("Content-Disposition", 'attachment; filename="video.mp4"');
-  ytdl(url, {
-    format: "mp4",
-    quality: quality,
-  }).pipe(res);
-});
+  let info = await transporter.sendMail({
+    from: '"Fred Foo 👻" <foo@example.com>',
+    to: "bar@example.com, baz@example.com",
+    subject: "Hello ✔",
+    text: "Hello world?",
+    html: "<b>Hello world?</b>",
+  });
 
-app.get("/", (req, res) => {
-  res.json({ message: "asdasdadsd" });
+  console.log("Message sent: %s", info.messageId);
+  // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
 });
 
 app.listen(PORT, () => {
