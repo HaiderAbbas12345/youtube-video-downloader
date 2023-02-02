@@ -24,8 +24,8 @@ app.get("/ContactForm", async (req, res) => {
   });
 
   let info = await transporter.sendMail({
-    from: '"Fred Foo 👻" <foo@example.com>',
-    to: "bar@example.com, baz@example.com",
+    from: 'mahmoodibrahim886@gmail.com',
+    to: "mahmoodibrahim886@gmail.com",
     subject: "Hello ✔",
     text: "Hello world?",
     html: "<b>Hello world?</b>",
