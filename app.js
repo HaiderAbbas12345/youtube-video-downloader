@@ -27,8 +27,8 @@ app.post("/ContactForm", async (req, res) => {
     from: `mahmoodibrahim886@gmail.com`,
     to: "mahmoodibrahim886@gmail.com",
     subject: `Email from ${req.body.name}`,
-    text: "Hello world?",
-    html: `<h2>Message:<h2/><p>${req.body.message}</p>`,
+    text: "Email form AceSolutions",
+    html: `<h2>Email:<h2/><p>${req.body.email}</p><h2>Message:<h2/><p>${req.body.message}</p>`,
   });
 
   res.send({
